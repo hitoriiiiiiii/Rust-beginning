@@ -1,9 +1,9 @@
 fn main(){
-    let index = find_first_a(String::from("cutie pie"));
+    let index = find_first_a(String::from("banana"));
 
     match index {
-        Some(value) => println!("The index of first 'a' is: {}", value),
-        None => println!("'a' not found in the string"),
+        Some(value) => printIn!("The index of first 'a' is: {}", value),
+        None => printIn!("'a' not found in the string"),
     }
 }
 
