@@ -13,10 +13,20 @@ impl Summary for User {
     }
 }
 
+struct Fix;
+impl Fix for User {}
+impl Summary for User {}
+
 fn main() {
     let user = User {
         name: String::from("Prarthana"),
         age: 20,
     };
     println!("{}", user.summarize());
+    let f = Fix;
+    notify(f);
+}
+
+fn notify(u: impl Summary){
+    println!("{}", u.summarize());
 }

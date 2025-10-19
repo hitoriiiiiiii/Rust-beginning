@@ -1,22 +1,18 @@
-trait Summary {
-    fn summarize(&self) -> String;
-}
-
-struct User {
-    name: String,
-    age: u32,
-}
-
-impl Summary for User {
-    fn summarize(&self) -> String {
-        return format!("{} is {} years old.", self.name, self.age);
-    }
-}
+use std::thread;
 
 fn main() {
-    let user = User {
-        name: String::from("Prarthana"),
-        age: 20,
-    };
-    println!("{}", user.summarize());
+    // Spawn a new thread
+    let handle = thread::spawn(|| {
+        for i in 0..5 {
+            println!("Hello from spawned thread: {}", i);
+        }
+    });
+
+    // Main thread work
+    for i in 0..50 {
+        println!("Hello from main thread: {}", i);
+    }
+
+    // Wait for the spawned thread to finish
+    handle.join().unwrap();
 }
